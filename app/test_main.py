@@ -2,6 +2,7 @@ import pytest
 
 from app.main import get_human_age
 
+
 @pytest.mark.parametrize("cat_age,dog_age,exception", [
     (-10, 12, ValueError),
     (10, -12, ValueError),
@@ -19,6 +20,7 @@ def test_func_should_raise_correct_exception(
 ) -> None:
     with pytest.raises(exception):
         get_human_age(cat_age, dog_age)
+
 
 @pytest.mark.parametrize("cat_age,dog_age", [
     (17, 19),
