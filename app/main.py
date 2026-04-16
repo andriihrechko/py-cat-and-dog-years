@@ -19,9 +19,11 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
     # TODO: Implement this function
-    if cat_age < 0 or dog_age < 0:
-        raise ValueError("Value must be positive integers.")
+    if not (isinstance(cat_age, int) and isinstance(dog_age, int)):
+        raise TypeError("Values must be integers.")
+    if not (0 <= cat_age <= 100 and 0 <= dog_age <= 100):
+        raise ValueError("Values must be positive integers.")
     cat_human = (cat_age >= 15) + (cat_age >= 24) + max(0, cat_age - 24) // 4
-    dog_human = (dog_age >= 15) + (dog_age >= 24) + max(0, dog_age - 24) // 4
+    dog_human = (dog_age >= 15) + (dog_age >= 24) + max(0, dog_age - 24) // 5
 
     return [cat_human, dog_human]
