@@ -33,6 +33,7 @@ def test_func_always_should_return_list_of_two_int(
 ) -> None:
     value = get_human_age(cat_age, dog_age)
     assert isinstance(value, list) and len(value) == 2
+    assert isinstance(value[0], int) and isinstance(value[1], int)
 
 
 @pytest.mark.parametrize("cat_age,dog_age,expected", [
@@ -42,12 +43,17 @@ def test_func_always_should_return_list_of_two_int(
     (15, 15, [1, 1]),
     (16, 15, [1, 1]),
     (15, 16, [1, 1]),
+    (23, 23, [1, 1]),
     (24, 24, [2, 2]),
     (15, 24, [1, 2]),
     (24, 15, [2, 1]),
+    (27, 27, [2, 2]),
+    (28, 28, [3, 2]),
+    (27, 29, [2, 3]),
     (32, 29, [4, 3]),
     (55, 53, [9, 7]),
-    (56, 54, [10, 8])
+    (56, 54, [10, 8]),
+    (100, 100, [21, 17])
 ])
 def test_func_always_should_return_correct_result(
         cat_age: int,
